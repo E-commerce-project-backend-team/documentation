@@ -1,0 +1,12 @@
+@startuml search_products
+
+customer -> ecommerceApp: search using keyword
+ecommerceApp -> productController: GET all products by keyword
+productController -> service: Query Repository
+service -> Repository: Query database
+database -> Repository: all products filtered by category
+Repository-> service: return products filtered by category
+service -> productController: return all products by category
+productController -> ecommerceApp: return response 200
+ecommerceApp -> customer: all products by filter
+@enduml

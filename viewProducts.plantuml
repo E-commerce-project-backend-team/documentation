@@ -1,0 +1,22 @@
+@startuml view_products
+customer -> ecommerceApp: Customer wants to view products
+ecommerceApp -> productsController: GET Request to view all products
+note  right ecommerceApp
+Response should include 
+1. productId
+2. productName
+3. productPrice
+4. productDescription
+5. productImage
+6. brand
+7. category
+8. size
+9. color
+end note
+productsController --> ecommerceApp: Response 200 OK - Return all products
+ecommerceApp --> customer: Display all products
+productsController -> productsService: call the service to get all products
+productsService -> productsRepository: call the repository to get all products from the database
+productsRepository --> productsService: Return all products
+productsService --> productsController: Return all products
+@enduml
