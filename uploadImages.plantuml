@@ -1,0 +1,15 @@
+@startuml upload_image
+
+admin -> ecommerceApp: Admin wants to upload image file
+ecommerceApp -> image/uploadImage: POST Request
+note left ecommerceApp
+Response should include
+1. imageURL
+2. folderName
+3.select Images
+end note
+uploadImageFile -> cloudinary/uploadImageFile: upload images to cloudinary
+cloudinary -> postgres: upload file image to the database
+
+@enduml
+

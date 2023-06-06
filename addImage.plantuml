@@ -1,0 +1,18 @@
+@startuml add_image
+
+admin -> ecommerceApp: Admin wants to add image
+ecommerceApp -> image/addImage: POST Request
+note left ecommerceApp
+Response should include
+1. imageURL
+end note
+addImage -> cloudinary/addImage: add image to cloudinary
+cloudinary -> postgres: add image to the database
+
+@enduml
+
+
+
+
+
+
